@@ -1,0 +1,92 @@
+<mvc:View controllerName="vuelostedn.controller.Vuelos"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns:table="sap.ui.table"
+    xmlns:smartTable="sap.ui.comp.smarttable"
+    xmlns:sfb="sap.ui.comp.smartfilterbar"    
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+
+    <VBox id="a" fitContainer="true">
+           
+            		<sfb:SmartFilterBar
+					id="smartFilterBar"
+					entitySet="ScarrSet"
+					search="onSearch">
+					<sfb:customData>
+						<core:CustomData
+							key="defaultFilterBarExpanded"
+							value='{"VH_many_filters": "true"}'/>
+						<core:CustomData
+							key="defaultShowAllFilters"
+							value='{"VH_many_filters": "true"}'/>
+					</sfb:customData>
+					<sfb:controlConfiguration>
+						<sfb:ControlConfiguration id="cc1"
+							key="Name"
+							visibleInAdvancedArea="true" />
+						<sfb:ControlConfiguration id="cc2"
+							key="Currency"
+							visibleInAdvancedArea="true" />
+					</sfb:controlConfiguration>
+				</sfb:SmartFilterBar>
+
+            <smartTable:SmartTable 
+                id="LineItemsSmartTable" 
+                entitySet="ScarrSet" 
+                smartFilterId="smartFilterBar" 
+                tableType="Table"
+                enableExport="true"
+                beforeExport="onBeforeExport"
+                useVariantManagement="true"
+                useTablePersonalisation="true"
+                header="Aerolineas"
+                showRowCount="true"
+                persistencyKey="smartKey"
+                enableAutoBinding="true"
+                showFullScreenButton="true"
+                enableAutoColumnWidth="true"
+                app:useSmartToggle="true">
+
+            <smartTable:layoutData>
+                <FlexItemData id="ae" growFactor="1" baseSize="0%" />
+            </smartTable:layoutData>
+            
+            <table:Table id="tabla" rows="{/ScarrSet}" >
+                
+                    <table:Column id="c1">
+                            <Label id="l1" text="Codigo Aerolinea" />
+                            <table:template>
+                                <Text id="t1" text="{Carrid}" />
+                            </table:template>
+                        </table:Column>
+                    <table:Column id="c2">
+                            <Label id="l2" text="Aerolinea" />
+                            <table:template>
+                                <Text id="t2" text="{Carrname}" />
+                            </table:template>
+                        </table:Column>
+                        <table:Column id="c3">
+                            <Label id="l3" text="Moneda" />
+                            <table:template>
+                                <Text id="t3" text="{Currcode}" />
+                            </table:template>
+                        </table:Column>
+                        <table:Column id="c4">
+                            <Label id="l4" text="Url" />
+                            <table:template>
+                                <Text id="t4" text="{Url}" />
+                            </table:template>
+                        </table:Column>
+                
+            </table:Table>
+
+</smartTable:SmartTable>
+        </VBox>
+
+
+
+    </Page>
+</mvc:View>

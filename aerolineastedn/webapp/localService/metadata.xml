@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="http://solt4sapp.t4sadvance.com:51100/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://solt4sapp.t4sadvance.com:51100/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://solt4sapp.t4sadvance.com:51100/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://solt4sapp.t4sadvance.com:51100/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="SAP__CodeList"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://solt4sapp.t4sadvance.com:51100/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://solt4sapp.t4sadvance.com:51100/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://solt4sapp.t4sadvance.com:51100/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://solt4sapp.t4sadvance.com:51100/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://solt4sapp.t4sadvance.com:51100/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://solt4sapp.t4sadvance.com:51100/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZTEDN_CON_SCARR_CDS" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="I_DraftAdministrativeDataType" sap:label="Draft Administration Data" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="DraftUUID"/>
+                    <PropertyRef Name="DraftEntityType"/>
+                </Key>
+                <Property Name="DraftUUID" Type="Edm.Guid" Nullable="false" sap:label="Draft (Technical ID)"/>
+                <Property Name="DraftEntityType" Type="Edm.String" Nullable="false" MaxLength="30" sap:display-format="UpperCase" sap:label="Draft Entity ID"/>
+                <Property Name="CreationDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:filter-restriction="interval" sap:label="Draft Created On"/>
+                <Property Name="CreatedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:text="CreatedByUserDescription" sap:label="Draft Created By" sap:value-list="standard"/>
+                <Property Name="LastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:filter-restriction="interval" sap:label="Draft Last Changed On"/>
+                <Property Name="LastChangedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:text="LastChangedByUserDescription" sap:label="Draft Last Changed By" sap:value-list="standard"/>
+                <Property Name="DraftAccessType" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Draft Access Type"/>
+                <Property Name="ProcessingStartDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft In Process Since"/>
+                <Property Name="InProcessByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:text="InProcessByUserDescription" sap:label="Draft In Process By"/>
+                <Property Name="DraftIsKeptByUser" Type="Edm.Boolean" sap:label="Draft Is Kept By User"/>
+                <Property Name="EnqueueStartDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Locked Since"/>
+                <Property Name="DraftIsCreatedByMe" Type="Edm.Boolean" sap:label="Draft Created By Me"/>
+                <Property Name="DraftIsLastChangedByMe" Type="Edm.Boolean" sap:label="Draft Last Changed By Me"/>
+                <Property Name="DraftIsProcessedByMe" Type="Edm.Boolean" sap:label="Draft In Process By Me"/>
+                <Property Name="CreatedByUserDescription" Type="Edm.String" MaxLength="80" sap:label="Draft Created By (Description)"/>
+                <Property Name="LastChangedByUserDescription" Type="Edm.String" MaxLength="80" sap:label="Draft Last Changed By (Description)"/>
+                <Property Name="InProcessByUserDescription" Type="Edm.String" MaxLength="80" sap:label="Draft In Process By (Description)"/>
+            </EntityType>
+            <EntityType Name="I_DraftAdministrativeUserVHType" sap:label="Draft User" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="UserID"/>
+                </Key>
+                <Property Name="UserID" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="UpperCase" sap:text="UserDescription" sap:label="User" sap:quickinfo="User Name in User Master Record"/>
+                <Property Name="UserDescription" Type="Edm.String" MaxLength="80" sap:label="Description" sap:quickinfo="User Description"/>
+            </EntityType>
+            <EntityType Name="ZTEDN_CON_SCARRType" sap:label="Vista de consumo de aerolineas" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Carrid"/>
+                    <PropertyRef Name="DraftUUID"/>
+                    <PropertyRef Name="IsActiveEntity"/>
+                </Key>
+                <Property Name="Activation_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Edit_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Preparation_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Validation_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Carrid" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:label="Código Compañia" sap:quickinfo="Airline Code" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Carrname" Type="Edm.String" MaxLength="20" sap:label="Nombre Compañia" sap:quickinfo="Airline name"/>
+                <Property Name="Currcode" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Moneda Compañia" sap:quickinfo="Local currency of airline" sap:semantics="currency-code"/>
+                <Property Name="Url" Type="Edm.String" MaxLength="255" sap:label="Página Web" sap:quickinfo="Airline URL"/>
+                <Property Name="HasDraftEntity" Type="Edm.Boolean" sap:label="Has Draft" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftUUID" Type="Edm.Guid" Nullable="false" sap:label="Key" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftEntityCreationDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Created On" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftEntityLastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Last Changed On" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="HasActiveEntity" Type="Edm.Boolean" sap:label="Has active" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false" sap:label="Is active" sap:creatable="false" sap:updatable="false"/>
+                <NavigationProperty Name="DraftAdministrativeData" Relationship="ZTEDN_CON_SCARR_CDS.assoc_10C5BABBF1B77D6CDC3C47BF449CCF0E" FromRole="FromRole_assoc_10C5BABBF1B77D6CDC3C47BF449CCF0E" ToRole="ToRole_assoc_10C5BABBF1B77D6CDC3C47BF449CCF0E"/>
+                <NavigationProperty Name="SiblingEntity" Relationship="ZTEDN_CON_SCARR_CDS.assoc_346E3D866002C230EA72D336F35DB446" FromRole="FromRole_assoc_346E3D866002C230EA72D336F35DB446" ToRole="ToRole_assoc_346E3D866002C230EA72D336F35DB446"/>
+                <NavigationProperty Name="to_vuelos" Relationship="ZTEDN_CON_SCARR_CDS.assoc_94C5D4D25616B888D7002DA87C311084" FromRole="FromRole_assoc_94C5D4D25616B888D7002DA87C311084" ToRole="ToRole_assoc_94C5D4D25616B888D7002DA87C311084"/>
+            </EntityType>
+            <EntityType Name="ZTEDN_CON_SPFLIType" sap:label="Vista de consumo de vuelos" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Carrid"/>
+                    <PropertyRef Name="Connid"/>
+                    <PropertyRef Name="DraftUUID"/>
+                    <PropertyRef Name="IsActiveEntity"/>
+                </Key>
+                <Property Name="Preparation_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Validation_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Carrid" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:label="Código Compañia" sap:quickinfo="Airline Code"/>
+                <Property Name="Connid" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="NonNegative" sap:label="Código conexión de vuelo" sap:quickinfo="Flight Connection Number" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Cityfrom" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Ciudad de Salida" sap:quickinfo="Departure city"/>
+                <Property Name="Airpfrom" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Aeropuerto de Salida" sap:quickinfo="Departure airport"/>
+                <Property Name="Cityto" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Ciudad de llegada" sap:quickinfo="Arrival city"/>
+                <Property Name="Airpto" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Aeropuerto de llegada" sap:quickinfo="Destination airport"/>
+                <Property Name="Deptime" Type="Edm.Time" Precision="0" sap:label="Hora de Salida" sap:quickinfo="Departure time"/>
+                <Property Name="Arrtime" Type="Edm.Time" Precision="0" sap:label="Hora de llegada" sap:quickinfo="Arrival time"/>
+                <Property Name="Cancel" Type="Edm.Byte" sap:label="Estado de Vuelo" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Cancel_text" Type="Edm.String" MaxLength="9" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="HasDraftEntity" Type="Edm.Boolean" sap:label="Has Draft" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftUUID" Type="Edm.Guid" Nullable="false" sap:label="Key" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ParentDraftUUID" Type="Edm.Guid" sap:label="Key" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftEntityCreationDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Created On" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftEntityLastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Last Changed On" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="HasActiveEntity" Type="Edm.Boolean" sap:label="Has active" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false" sap:label="Is active" sap:creatable="false" sap:updatable="false"/>
+                <NavigationProperty Name="to_root" Relationship="ZTEDN_CON_SCARR_CDS.assoc_94C5D4D25616B888D7002DA87C311084" FromRole="ToRole_assoc_94C5D4D25616B888D7002DA87C311084" ToRole="FromRole_assoc_94C5D4D25616B888D7002DA87C311084"/>
+                <NavigationProperty Name="DraftAdministrativeData" Relationship="ZTEDN_CON_SCARR_CDS.assoc_093E272128BE904D5B547BF9A2BF26BB" FromRole="FromRole_assoc_093E272128BE904D5B547BF9A2BF26BB" ToRole="ToRole_assoc_093E272128BE904D5B547BF9A2BF26BB"/>
+                <NavigationProperty Name="SiblingEntity" Relationship="ZTEDN_CON_SCARR_CDS.assoc_524883DEDEE7DE42EC5A47DA24386A71" FromRole="FromRole_assoc_524883DEDEE7DE42EC5A47DA24386A71" ToRole="ToRole_assoc_524883DEDEE7DE42EC5A47DA24386A71"/>
+            </EntityType>
+            <ComplexType Name="ValidationFunctionResult">
+                <Property Name="IsValid" Type="Edm.Boolean" sap:label="Is valid"/>
+            </ComplexType>
+            <Association Name="assoc_346E3D866002C230EA72D336F35DB446" sap:content-version="1">
+                <End Type="ZTEDN_CON_SCARR_CDS.ZTEDN_CON_SCARRType" Multiplicity="1" Role="FromRole_assoc_346E3D866002C230EA72D336F35DB446"/>
+                <End Type="ZTEDN_CON_SCARR_CDS.ZTEDN_CON_SCARRType" Multiplicity="0..1" Role="ToRole_assoc_346E3D866002C230EA72D336F35DB446"/>
+            </Association>
+            <Association Name="assoc_94C5D4D25616B888D7002DA87C311084" sap:content-version="1">
+                <End Type="ZTEDN_CON_SCARR_CDS.ZTEDN_CON_SCARRType" Multiplicity="1" Role="FromRole_assoc_94C5D4D25616B888D7002DA87C311084">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Type="ZTEDN_CON_SCARR_CDS.ZTEDN_CON_SPFLIType" Multiplicity="*" Role="ToRole_assoc_94C5D4D25616B888D7002DA87C311084"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_assoc_94C5D4D25616B888D7002DA87C311084">
+                        <PropertyRef Name="Carrid"/>
+                    </Principal>
+                    <Dependent Role="ToRole_assoc_94C5D4D25616B888D7002DA87C311084">
+                        <PropertyRef Name="Carrid"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_10C5BABBF1B77D6CDC3C47BF449CCF0E" sap:content-version="1">
+                <End Type="ZTEDN_CON_SCARR_CDS.ZTEDN_CON_SCARRType" Multiplicity="1" Role="FromRole_assoc_10C5BABBF1B77D6CDC3C47BF449CCF0E"/>
+                <End Type="ZTEDN_CON_SCARR_CDS.I_DraftAdministrativeDataType" Multiplicity="0..1" Role="ToRole_assoc_10C5BABBF1B77D6CDC3C47BF449CCF0E"/>
+            </Association>
+            <Association Name="assoc_093E272128BE904D5B547BF9A2BF26BB" sap:content-version="1">
+                <End Type="ZTEDN_CON_SCARR_CDS.ZTEDN_CON_SPFLIType" Multiplicity="1" Role="FromRole_assoc_093E272128BE904D5B547BF9A2BF26BB"/>
+                <End Type="ZTEDN_CON_SCARR_CDS.I_DraftAdministrativeDataType" Multiplicity="0..1" Role="ToRole_assoc_093E272128BE904D5B547BF9A2BF26BB"/>
+            </Association>
+            <Association Name="assoc_524883DEDEE7DE42EC5A47DA24386A71" sap:content-version="1">
+                <End Type="ZTEDN_CON_SCARR_CDS.ZTEDN_CON_SPFLIType" Multiplicity="1" Role="FromRole_assoc_524883DEDEE7DE42EC5A47DA24386A71"/>
+                <End Type="ZTEDN_CON_SCARR_CDS.ZTEDN_CON_SPFLIType" Multiplicity="0..1" Role="ToRole_assoc_524883DEDEE7DE42EC5A47DA24386A71"/>
+            </Association>
+            <EntityContainer Name="ZTEDN_CON_SCARR_CDS_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="I_DraftAdministrativeData" EntityType="ZTEDN_CON_SCARR_CDS.I_DraftAdministrativeDataType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="I_DraftAdministrativeUserVH" EntityType="ZTEDN_CON_SCARR_CDS.I_DraftAdministrativeUserVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZTEDN_CON_SCARR" EntityType="ZTEDN_CON_SCARR_CDS.ZTEDN_CON_SCARRType" sap:content-version="1"/>
+                <EntitySet Name="ZTEDN_CON_SPFLI" EntityType="ZTEDN_CON_SCARR_CDS.ZTEDN_CON_SPFLIType" sap:content-version="1"/>
+                <AssociationSet Name="assoc_524883DEDEE7DE42EC5A47DA24386A71" Association="ZTEDN_CON_SCARR_CDS.assoc_524883DEDEE7DE42EC5A47DA24386A71" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZTEDN_CON_SPFLI" Role="FromRole_assoc_524883DEDEE7DE42EC5A47DA24386A71"/>
+                    <End EntitySet="ZTEDN_CON_SPFLI" Role="ToRole_assoc_524883DEDEE7DE42EC5A47DA24386A71"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_94C5D4D25616B888D7002DA87C311084" Association="ZTEDN_CON_SCARR_CDS.assoc_94C5D4D25616B888D7002DA87C311084" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZTEDN_CON_SCARR" Role="FromRole_assoc_94C5D4D25616B888D7002DA87C311084"/>
+                    <End EntitySet="ZTEDN_CON_SPFLI" Role="ToRole_assoc_94C5D4D25616B888D7002DA87C311084"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_10C5BABBF1B77D6CDC3C47BF449CCF0E" Association="ZTEDN_CON_SCARR_CDS.assoc_10C5BABBF1B77D6CDC3C47BF449CCF0E" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZTEDN_CON_SCARR" Role="FromRole_assoc_10C5BABBF1B77D6CDC3C47BF449CCF0E"/>
+                    <End EntitySet="I_DraftAdministrativeData" Role="ToRole_assoc_10C5BABBF1B77D6CDC3C47BF449CCF0E"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_346E3D866002C230EA72D336F35DB446" Association="ZTEDN_CON_SCARR_CDS.assoc_346E3D866002C230EA72D336F35DB446" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZTEDN_CON_SCARR" Role="FromRole_assoc_346E3D866002C230EA72D336F35DB446"/>
+                    <End EntitySet="ZTEDN_CON_SCARR" Role="ToRole_assoc_346E3D866002C230EA72D336F35DB446"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_093E272128BE904D5B547BF9A2BF26BB" Association="ZTEDN_CON_SCARR_CDS.assoc_093E272128BE904D5B547BF9A2BF26BB" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZTEDN_CON_SPFLI" Role="FromRole_assoc_093E272128BE904D5B547BF9A2BF26BB"/>
+                    <End EntitySet="I_DraftAdministrativeData" Role="ToRole_assoc_093E272128BE904D5B547BF9A2BF26BB"/>
+                </AssociationSet>
+                <FunctionImport Name="ZTEDN_CON_SCARRActivation" ReturnType="ZTEDN_CON_SCARR_CDS.ZTEDN_CON_SCARRType" EntitySet="ZTEDN_CON_SCARR" m:HttpMethod="POST" sap:action-for="ZTEDN_CON_SCARR_CDS.ZTEDN_CON_SCARRType" sap:applicable-path="Activation_ac">
+                    <Parameter Name="Carrid" Type="Edm.String" Mode="In" MaxLength="3" sap:label="Airline"/>
+                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In" sap:label="Key"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In" sap:label="Is active"/>
+                </FunctionImport>
+                <FunctionImport Name="ZTEDN_CON_SCARREdit" ReturnType="ZTEDN_CON_SCARR_CDS.ZTEDN_CON_SCARRType" EntitySet="ZTEDN_CON_SCARR" m:HttpMethod="POST" sap:action-for="ZTEDN_CON_SCARR_CDS.ZTEDN_CON_SCARRType" sap:applicable-path="Edit_ac">
+                    <Parameter Name="Carrid" Type="Edm.String" Mode="In" MaxLength="3" sap:label="Airline"/>
+                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In" sap:label="Key"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In" sap:label="Is active"/>
+                    <Parameter Name="PreserveChanges" Type="Edm.Boolean" Mode="In" Nullable="true" sap:label="TRUE"/>
+                </FunctionImport>
+                <FunctionImport Name="ZTEDN_CON_SCARRPreparation" ReturnType="ZTEDN_CON_SCARR_CDS.ZTEDN_CON_SCARRType" EntitySet="ZTEDN_CON_SCARR" m:HttpMethod="POST" sap:action-for="ZTEDN_CON_SCARR_CDS.ZTEDN_CON_SCARRType" sap:applicable-path="Preparation_ac">
+                    <Parameter Name="Carrid" Type="Edm.String" Mode="In" MaxLength="3" sap:label="Airline"/>
+                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In" sap:label="Key"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In" sap:label="Is active"/>
+                    <Parameter Name="SideEffectsQualifier" Type="Edm.String" Mode="In" Nullable="true" sap:label="SideEffectsQualifier"/>
+                </FunctionImport>
+                <FunctionImport Name="ZTEDN_CON_SCARRValidation" ReturnType="ZTEDN_CON_SCARR_CDS.ValidationFunctionResult" m:HttpMethod="GET" sap:action-for="ZTEDN_CON_SCARR_CDS.ZTEDN_CON_SCARRType" sap:applicable-path="Validation_ac">
+                    <Parameter Name="Carrid" Type="Edm.String" Mode="In" MaxLength="3" sap:label="Airline"/>
+                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In" sap:label="Key"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In" sap:label="Is active"/>
+                    <Parameter Name="SideEffectsQualifier" Type="Edm.String" Mode="In" Nullable="true" sap:label="SideEffectsQualifier"/>
+                </FunctionImport>
+                <FunctionImport Name="ZTEDN_CON_SPFLIPreparation" ReturnType="ZTEDN_CON_SCARR_CDS.ZTEDN_CON_SPFLIType" EntitySet="ZTEDN_CON_SPFLI" m:HttpMethod="POST" sap:action-for="ZTEDN_CON_SCARR_CDS.ZTEDN_CON_SPFLIType" sap:applicable-path="Preparation_ac">
+                    <Parameter Name="Carrid" Type="Edm.String" Mode="In" MaxLength="3" sap:label="Airline"/>
+                    <Parameter Name="Connid" Type="Edm.String" Mode="In" MaxLength="4" sap:label="Connection Number"/>
+                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In" sap:label="Key"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In" sap:label="Is active"/>
+                    <Parameter Name="SideEffectsQualifier" Type="Edm.String" Mode="In" Nullable="true" sap:label="SideEffectsQualifier"/>
+                </FunctionImport>
+                <FunctionImport Name="ZTEDN_CON_SPFLIValidation" ReturnType="ZTEDN_CON_SCARR_CDS.ValidationFunctionResult" m:HttpMethod="GET" sap:action-for="ZTEDN_CON_SCARR_CDS.ZTEDN_CON_SPFLIType" sap:applicable-path="Validation_ac">
+                    <Parameter Name="Carrid" Type="Edm.String" Mode="In" MaxLength="3" sap:label="Airline"/>
+                    <Parameter Name="Connid" Type="Edm.String" Mode="In" MaxLength="4" sap:label="Connection Number"/>
+                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In" sap:label="Key"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In" sap:label="Is active"/>
+                    <Parameter Name="SideEffectsQualifier" Type="Edm.String" Mode="In" Nullable="true" sap:label="SideEffectsQualifier"/>
+                </FunctionImport>
+            </EntityContainer>
+            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <Annotations Target="ZTEDN_CON_SCARR_CDS.ZTEDN_CON_SCARR_CDS_Entities/ZTEDN_CON_SCARR" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.DraftRoot">
+                    <Record>
+                        <PropertyValue Property="ActivationAction" String="ZTEDN_CON_SCARR_CDS.ZTEDN_CON_SCARR_CDS_Entities/ZTEDN_CON_SCARRActivation"/>
+                        <PropertyValue Property="EditAction" String="ZTEDN_CON_SCARR_CDS.ZTEDN_CON_SCARR_CDS_Entities/ZTEDN_CON_SCARREdit"/>
+                        <PropertyValue Property="PreparationAction" String="ZTEDN_CON_SCARR_CDS.ZTEDN_CON_SCARR_CDS_Entities/ZTEDN_CON_SCARRPreparation"/>
+                        <PropertyValue Property="ValidationFunction" String="ZTEDN_CON_SCARR_CDS.ZTEDN_CON_SCARR_CDS_Entities/ZTEDN_CON_SCARRValidation"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>Activation_ac</PropertyPath>
+                                <PropertyPath>Edit_ac</PropertyPath>
+                                <PropertyPath>Preparation_ac</PropertyPath>
+                                <PropertyPath>Validation_ac</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="FilterExpressionRestrictions">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="DraftEntityCreationDateTime"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="DraftEntityLastChangeDateTime"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="DraftAdministrativeData"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="SiblingEntity"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_vuelos"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="true"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>Activation_ac</PropertyPath>
+                                <PropertyPath>Edit_ac</PropertyPath>
+                                <PropertyPath>Preparation_ac</PropertyPath>
+                                <PropertyPath>Validation_ac</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZTEDN_CON_SCARR_CDS.ZTEDN_CON_SCARR_CDS_Entities/ZTEDN_CON_SPFLI" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.DraftNode">
+                    <Record>
+                        <PropertyValue Property="PreparationAction" String="ZTEDN_CON_SCARR_CDS.ZTEDN_CON_SCARR_CDS_Entities/ZTEDN_CON_SPFLIPreparation"/>
+                        <PropertyValue Property="ValidationFunction" String="ZTEDN_CON_SCARR_CDS.ZTEDN_CON_SCARR_CDS_Entities/ZTEDN_CON_SPFLIValidation"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.DraftActivationVia">
+                    <Collection>
+                        <String>ZTEDN_CON_SCARR_CDS.ZTEDN_CON_SCARR_CDS_Entities/ZTEDN_CON_SCARR</String>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>Preparation_ac</PropertyPath>
+                                <PropertyPath>Validation_ac</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="FilterExpressionRestrictions">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="DraftEntityCreationDateTime"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="DraftEntityLastChangeDateTime"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="DraftAdministrativeData"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="SiblingEntity"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_root"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>Preparation_ac</PropertyPath>
+                                <PropertyPath>Validation_ac</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZTEDN_CON_SCARR_CDS.I_DraftAdministrativeDataType/CreatedByUser" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Draft User"/>
+                        <PropertyValue Property="CollectionPath" String="I_DraftAdministrativeUserVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CreatedByUser"/>
+                                    <PropertyValue Property="ValueListProperty" String="UserID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="UserDescription"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZTEDN_CON_SCARR_CDS.I_DraftAdministrativeDataType/LastChangedByUser" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Draft User"/>
+                        <PropertyValue Property="CollectionPath" String="I_DraftAdministrativeUserVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LastChangedByUser"/>
+                                    <PropertyValue Property="ValueListProperty" String="UserID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="UserDescription"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZTEDN_CON_SCARR_CDS.ZTEDN_CON_SCARR_CDS_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+            </Annotations>
+            <Annotations Target="ZTEDN_CON_SCARR_CDS.ZTEDN_CON_SCARRType/to_vuelos" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Composition"/>
+            </Annotations>
+            <Annotations Target="ZTEDN_CON_SCARR_CDS.ZTEDN_CON_SCARRType/Carrid" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="ZTEDN_CON_SCARR_CDS.ZTEDN_CON_SPFLIType/Carrid" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="ZTEDN_CON_SCARR_CDS.ZTEDN_CON_SPFLIType/Connid" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="ZTEDN_CON_SCARR_CDS.ZTEDN_CON_SCARR_CDS_Entities/I_DraftAdministrativeData" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="FilterExpressionRestrictions">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="CreationDateTime"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="LastChangeDateTime"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="http://solt4sapp.t4sadvance.com:51100/sap/opu/odata/sap/ZTEDN_CON_SCARR_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://solt4sapp.t4sadvance.com:51100/sap/opu/odata/sap/ZTEDN_CON_SCARR_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

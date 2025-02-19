@@ -1,0 +1,56 @@
+<mvc:View controllerName="aerolineastedn.controller.tabla"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:smartTable="sap.ui.comp.smarttable"
+    xmlns:smartfilterbar="sap.ui.comp.smartfilterbar" 
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+    xmlns="sap.m">
+
+    <Page id="page" title="{i18n>title}">
+
+        <VBox id="a" fitContainer="true">
+            <smartfilterbar:SmartFilterBar 
+                id="smartFilterBar" 
+                entitySet="ZTEDN_CON_SCARR" 
+                persistencyKey="SmartFilter_Explored" 
+                enableBasicSearch="true">
+
+                <smartfilterbar:layoutData>
+                    <FlexItemData id="ab" shrinkFactor="0" />
+                </smartfilterbar:layoutData>
+            </smartfilterbar:SmartFilterBar>
+
+            <smartTable:SmartTable 
+                id="LineItemsSmartTable" 
+                entitySet="ZTEDN_CON_SCARR" 
+                smartFilterId="smartFilterBar" 
+                tableType="Table"
+                enableExport="true"
+                beforeExport="onBeforeExport"
+                useVariantManagement="true"
+                useTablePersonalisation="true"
+                header="Aerolineas"
+                showRowCount="true"
+                persistencyKey="smartKey"
+                enableAutoBinding="true"
+                showFullScreenButton="true"
+                enableAutoColumnWidth="true"
+                app:useSmartToggle="true"
+                >
+
+                <smartTable:customToolbar>
+                    <OverflowToolbar id="ac" >
+                        <Button id="ad" icon="sap-icon://e-learning" text="Open PopUp" press="openpopup" />
+                    </OverflowToolbar>
+                </smartTable:customToolbar>
+
+                <smartTable:layoutData>
+                    <FlexItemData id="ae" growFactor="1" baseSize="0%" />
+                </smartTable:layoutData>
+
+            </smartTable:SmartTable>
+        </VBox>
+
+
+    </Page>
+</mvc:View>
